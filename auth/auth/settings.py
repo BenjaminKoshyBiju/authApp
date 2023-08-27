@@ -13,8 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'pyamqp://guest@localhost//'
 
 
 
@@ -146,9 +145,9 @@ EMAIL_USE_SSL = False  # Use SSL for secure connection (use either TLS or SSL)
 EMAIL_TIMEOUT = 60  # Timeout for sending emails
 
 # SMTP Authentication
-EMAIL_HOST_USER = 'benjaminkoshy038@.com'  # Your email address
+EMAIL_HOST_USER = 'benjaminkoshy038@gmail.com'  # Your email address
 EMAIL_HOST_PASSWORD = 'jehynzmeaktvvpzc'  # Your email password
 
 # Default From Email
-DEFAULT_FROM_EMAIL = 'benjaminkoshy038@.com'
+DEFAULT_FROM_EMAIL = 'benjaminkoshy038@gmail.com'
 

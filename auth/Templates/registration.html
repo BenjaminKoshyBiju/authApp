@@ -39,7 +39,13 @@
     {{ form.as_p }}  <!-- Renders form fields as paragraphs -->
     <button type="submit" class="btn btn-primary">Register</button>
   </form>
-  <p>{% if messages %}<span class="text-danger">{{ messages }}</span>{% endif %}</p>
+  {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 {% endblock %}
 
 </body>

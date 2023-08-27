@@ -19,7 +19,7 @@ def register(request):
             send_verification_email.delay(user.email, token.code)
 
             messages.success(request, 'Registration successful! Check your email for verification.')
-            return redirect('token')
+            return redirect('Register')
     else:
         form = RegistrationForm()
     return render(request, 'registration.html', {'form': form})
