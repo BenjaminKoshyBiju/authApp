@@ -12,13 +12,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'auth.settings')
-app = Celery('auth')
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 
-app.config_from_object('django.conf:settings', namespace='CELERY')
-app.autodiscover_tasks()
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'auth.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Authapp',
+        'NAME': 'Auth',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost'
@@ -151,3 +151,4 @@ EMAIL_HOST_PASSWORD = 'jehynzmeaktvvpzc'  # Your email password
 
 # Default From Email
 DEFAULT_FROM_EMAIL = 'benjaminkoshy038@.com'
+

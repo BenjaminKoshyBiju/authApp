@@ -19,10 +19,10 @@ def register(request):
             send_verification_email.delay(user.email, token.code)
 
             messages.success(request, 'Registration successful! Check your email for verification.')
-            return redirect('login')
+            return redirect('token')
     else:
         form = RegistrationForm()
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'registration.html', {'form': form})
 
 def verify_token(request):
     if request.method == 'POST':
@@ -49,7 +49,7 @@ def verify_token(request):
                 messages.error(request, 'Invalid or expired verification code.')
     else:
         token_form = TokenForm()
-    return render(request, 'verification/verify_token.html', {'token_form': token_form})
+    return render(request, 'token.html', {'token_form': token_form})
 
 def user_login(request):
     if request.method == 'POST':

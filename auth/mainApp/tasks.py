@@ -2,13 +2,13 @@ from celery import shared_task
 from django.core.mail import send_mail
 import random
 import string
-from .models import register,Token  # Import your models
+from .models import register, Token
 
 @shared_task
 def send_verification_email(email, code):
     subject = 'Your Verification Code'
     message = f'Your verification code is: {code}'
-    from_email = 'your@example.com'
+    from_email = 'benjaminkoshy038@gmail.com'
     recipient_list = [email]
     send_mail(subject, message, from_email, recipient_list)
 
