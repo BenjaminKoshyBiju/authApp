@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm, TokenForm
 from .models import Token, LoginUser
-from .tasks import send_verification_email
+from .tasks import generate_and_send_code
 
 def register(request):
     if request.method == 'POST':
@@ -12,12 +12,13 @@ def register(request):
             user = form.save(commit=False)
             user.is_verified = False
             user.save()
-
-            token = Token.objects.create(user=user)
+            generate_and_send_code(user.email)
+           
+            print('token created no pass though')
+            
 
             # Send verification email asynchronously using Celery
-            send_verification_email.delay(user.email, token.code)
-
+  
             messages.success(request, 'Registration successful! Check your email for verification.')
             return redirect('Register')
     else:
