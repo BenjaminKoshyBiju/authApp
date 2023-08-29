@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm, TokenForm
@@ -102,9 +103,10 @@ def user_login(request):
 
     return render(request, 'login.html')
 
-
+@login_required
 def dashboard(request):
-   
+    user = request.user
+    full_name = user.full_name
 
-    return render(request, 'dashboard.html')
+    return render(request, 'dashboard.html',{'full_name':full_name})
      
