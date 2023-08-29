@@ -9,8 +9,8 @@ def generate_random_code():
     return ''.join(random.choice(characters) for _ in range(6))
 
 @shared_task
-def generate_and_send_code(email):
-    user = register.objects.get(email=email)
+def generate_and_send_code(email,username):
+    user = register.objects.get(username=username)
     
     try:
         existing_code = Token.objects.get(user=user)
