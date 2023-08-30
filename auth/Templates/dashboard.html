@@ -32,17 +32,17 @@
 </style>
 </head>
 <body>
-hello welcome to my Project {{ full_name }}!
-<p>If you have reached till here then that means the project works as intented!</p>
+hello {{ full_name }}, welcome to my Project!  
+<p>If you have reached till here from Registration, Code Generation and Login then that means the project works as intented!</p>
 <p>I Didn't start off this project in the right foot. My Intention was very clear make a project that uses celery
     to transfer mails with random code so that once verified, Users can login just like we see in today's real
     world applications but it was only after i had created the work flow and planned the project and started working
-realize that Celery dropped support for Windows. and i tried redis along with it. Great Combo Right! couldnt get celery to work 
-so realized the broker is the problem the broker isnt working found an alternative rabbitmq, hopped on it and celery worked like a charm or so i thought
- the tasks seemed to load and work as per the logs but no mails were being sent. Got stuck again. Everything seemed right celery was working
+realize that Celery dropped support for Windows. and I tried redis along with it. Great Combo Right! couldnt get celery to work 
+so realized the broker is the problem, the broker isnt working found an alternative rabbitmq, hopped on it and celery worked like a charm or so i thought
+ the tasks seemed to load and work as per the logs but no mails were being sent. Got stuck again! Everything seemed right, celery was working
 broker was set and running and i could see celery did work because in the rabbitmq gui in http://localhost:15672/#/ using guest user i could see Everythingtime i clicked register
 queued messages were in ready state. Ill cut the chase after being stuck for a while I found out in stackoverflow that i had to use this code
-celery -A mainApp worker -l info -P gevent to run celery in windows I was using the generic code to run it so it technically ran but didnt work
+celery -A App Name worker -l info -P gevent to run celery in windows I was using the generic code to run it so it technically ran but didnt work
 well thanks to that revelation i manageg to preceed further and got the mails working but random code wasnt being generated. Here we go again...
 long story short fixed the bugs in code one after the other until finally I finished it. Started on Aug 25th and writing this now on Aug 29th
 Mind you I did this on top my other work.</p>
@@ -50,6 +50,14 @@ Mind you I did this on top my other work.</p>
     in these complex projects I started working on, Persistance is the Key! If you have enough persistance and keep on moving foreword 
 eventually you will solve the problem, Wanna know a cheat? Get a Mentor you would solve the problems much faster and learn so much more.
 I dont have a mentor now. but I wish to find him/her soon but until that day I will continue on this journy as a lone wolf. </p>
+
+<div class="user-panel">
+  <!-- Other user-related information -->
+  <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+  </form>
+</div>
 
 
 </body>
