@@ -147,8 +147,8 @@ EMAIL_USE_SSL = False  # Use SSL for secure connection (use either TLS or SSL)
 EMAIL_TIMEOUT = 60  # Timeout for sending emails
 
 # SMTP Authentication
-EMAIL_HOST_USER = 'benjaminkoshy038@gmail.com'  # Your email address
-EMAIL_HOST_PASSWORD = 'jehynzmeaktvvpzc'  # Your email password
+EMAIL_HOST_USER = ''  # Your email address
+EMAIL_HOST_PASSWORD = ''  # Your email password
 
 
 
